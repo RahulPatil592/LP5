@@ -82,7 +82,6 @@ int main(){
     //parallel add
     start=high_resolution_clock::now();
     add<<<blocksPerGrid,threadsPerBlock>>>(X,Y,Z,N);
-    cudaDeviceSynchronize();
     cudaMemcpy(C,Z,vectorBytes,cudaMemcpyDeviceToHost);
     stop=high_resolution_clock::now();
     duration=duration_cast<microseconds>(stop-start);
